@@ -16,7 +16,22 @@
 
 ## Subscribe (구독) -> subscribe.ts
 
--
+```ts
+    // Observer
+    _.subscribe({
+        next : () ...
+        error : () ...
+        complete : () ... // 메모리 해제
+    })
+
+    const subscriber = _.subscribe({...})
+    subscriber.unsubcribe() // 구독 해제
+```
+
+## Operator (연산자) -> operator.ts
+
+- Creation Operators (of, from, range, interval...)
+- Pipeable Operators (filter, reduce...)
 
 ## Refernece
 

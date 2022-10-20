@@ -31,4 +31,46 @@ const arr2$ = rx.of([1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15])
 }
 
 {
+  // Error
+  const ob = new rx.Observable((sub) => {
+    sub.next(1)
+    sub.next(2)
+    sub.next(3)
+    throw new Error('nono')
+    sub.complete() // memory 회수
+  })
+
+  ob.subscribe({
+    next: (obs) => console.log(obs),
+    error: (e) => console.error(e),
+    complete: () => console.log('---- complete ----'),
+  })
+}
+
+{
+  // Complete
+  const ob = new rx.Observable((sub) => {
+    sub.next(1)
+    sub.next(2)
+    sub.next(3)
+    sub.complete() // memory 회수
+  })
+
+  ob.subscribe({
+    next: (obs) => console.log(obs),
+    complete: () => console.log('---- complete ----'),
+  })
+}
+
+{
+  // 구독해제
+  const intervalObj = rx.interval(1000)
+
+  const subscription = intervalObj.subscribe({
+    next: (data) => console.log(data),
+  })
+
+  setTimeout(() => {
+    subscription.unsubscribe()
+  }, 5000)
 }
