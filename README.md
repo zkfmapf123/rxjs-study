@@ -30,8 +30,31 @@
 
 ## Operator (연산자) -> operator.ts
 
+- https://rxjs.dev/guide/operators
 - Creation Operators (of, from, range, interval...)
 - Pipeable Operators (filter, reduce...)
+
+```ts
+    const arr = [1,2,3,4,5]
+
+    rx.from(arr)
+    .pipe(
+        rx.filter((item) => item > 3),
+        rx.reduce((acc,cur) => acc+cur,0)
+    )
+    .subscribe({
+        next : (data) => ...,
+        error : (e) => ...,
+        complete :() => ...
+    })
+
+
+    console.log(arr) // 1,2,3,4,5
+
+    /*
+        순수함수 이기때문에 기존의 원본은 건드리지 않는다
+    */
+```
 
 ## Refernece
 
