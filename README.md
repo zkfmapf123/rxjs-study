@@ -56,6 +56,13 @@
     */
 ```
 
+## Subejct -> subject.ts
+
+```
+    Observable은 구독을 해야 발행 -> unicast
+    Subject는 개발자가 원하는 때에 발행 -> multicast
+```
+
 ## Refernece
 
 - https://rxviz.com/
